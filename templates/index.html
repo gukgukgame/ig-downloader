@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IG Downloader Simpel</title>
+    <style>
+        body { font-family: sans-serif; background-color: #fafafa; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
+        h1 { color: #E1306C; margin-bottom: 20px; font-size: 24px; }
+        input[type="text"] { width: 90%; padding: 10px; border: 1px solid #dbdbdb; border-radius: 5px; margin-bottom: 10px; }
+        button { background-color: #0095f6; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; }
+        button:hover { background-color: #0074cc; }
+        .result { margin-top: 20px; }
+        img { max-width: 100%; border-radius: 5px; margin-top: 10px; }
+        .error { color: red; font-size: 14px; margin-top: 10px; }
+        .download-btn { display: inline-block; margin-top: 10px; text-decoration: none; background: #2ecc71; color: white; padding: 8px 15px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>IG Foto Downloader</h1>
+        <p style="font-size: 12px; color: gray;">Khusus Akun Public (Tidak Private)</p>
+        <form method="POST">
+            <input type="text" name="url" placeholder="Tempel Link Instagram di sini..." required>
+            <button type="submit">Cek Foto</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if image_url %}
+            <div class="result">
+                <p>Foto Ditemukan:</p>
+                <img src="{{ image_url }}" alt="Instagram Photo">
+                <br>
+                <a href="{{ image_url }}" target="_blank" class="download-btn">Download Full Size</a>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
